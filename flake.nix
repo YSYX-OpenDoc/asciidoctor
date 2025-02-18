@@ -13,19 +13,19 @@
         bundle lock --update prawn
         bundix
       '';
-      prawn-subtree = pkgs.writeScriptBin "prawn-subtree" ''
+      subtrees = map (name: pkgs.writeScriptBin "${name}-subtree" ''
         #!${pkgs.runtimeShell}
         export PATH=$PATH:${pkgs.lib.makeBinPath (with pkgs; [ git ])}
         cd $MANUAL_PATH
-        git subtree --prefix=asciidoctor/prawn "$@"
-      '';
+        git subtree --prefix=asciidoctor/${name} "$@"
+      '') [ "prawn" "asciidoctor-pdf" ];
     in {
       devShells.default = pkgs.mkShell {
         buildInputs = with pkgs; [];
         nativeBuildInputs = with pkgs; [
-          asciidoctor gen prawn-subtree
+          asciidoctor gen
           nodePackages.wavedrom-cli
-        ];
+        ] ++ subtrees;
         shellHook = ''
           export MANUAL_PATH=$PWD
         '';

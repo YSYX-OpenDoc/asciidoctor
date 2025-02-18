@@ -14,7 +14,10 @@ bundlerApp rec {
   pname = "asciidoctor";
   gemdir = ./.;
 
-  extraConfigPaths = [ "${./.}/prawn" ];
+  extraConfigPaths = [
+    "${./.}/prawn"
+    "${./.}/asciidoctor-pdf"
+  ];
 
   exes = [
     "asciidoctor"

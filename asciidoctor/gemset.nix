@@ -25,10 +25,10 @@
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "1c62cx96r0v265mywnlik43qx0wf6bjbzl54qa47x6dzjg861mvk";
+      sha256 = "0nmyxpngg5rycyryhq9l9hapz1y3iqyflskyksxkqm0832a5vjqm";
       type = "gem";
     };
-    version = "1.1.1";
+    version = "2.0.1";
   };
   asciidoctor = {
     groups = ["default"];
@@ -142,9 +142,8 @@
     groups = ["default"];
     platforms = [];
     source = {
-      remotes = ["https://rubygems.org"];
-      sha256 = "1ybkw3xjv75xsc0wbwg76bk83sfspr50k2phshpvh9ynchli8jh3";
-      type = "gem";
+      path = ./asciidoctor-pdf;
+      type = "path";
     };
     version = "2.3.19";
   };
@@ -228,10 +227,10 @@
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "0chwfdq2a6kbj6xz9l6zrdfnyghnh32si82la1dnpa5h75ir5anl";
+      sha256 = "1ipbrgvf0pp6zxdk5ascp6i29aybz2bx9wdrlchjmpx6mhvkwfw1";
       type = "gem";
     };
-    version = "1.3.4";
+    version = "1.3.5";
   };
   csl = {
     dependencies = ["namae" "rexml"];
@@ -261,10 +260,10 @@
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "17i0fn99kswvfps8r698zw2cr16rc98xdrl0d26y36rv3vhdqh0r";
+      sha256 = "0625073hwx41c246v9dvkp0rk0xgh9d0sc0gm73dbmlxnjwgalv7";
       type = "gem";
     };
-    version = "1.19.1";
+    version = "1.21.0";
   };
   ffi = {
     groups = ["default"];
@@ -407,10 +406,10 @@
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "0n0pp7blk3np3fqsb54l34fsamrww80cp3dhlhskfayg7542mrv1";
+      sha256 = "06s17fbb9br58ng02kzwijch0kbdsjzr3rnrganr98s9q8hlanml";
       type = "gem";
     };
-    version = "2.12.0";
+    version = "2.14.1";
   };
   polyglot = {
     groups = ["default"];
@@ -615,10 +614,10 @@
     platforms = [];
     source = {
       remotes = ["https://rubygems.org"];
-      sha256 = "0adc8qblz8ii668r3rksjx83p675iryh52rvdvysimx2hkbasj7d";
+      sha256 = "1m5fqy7vq6y7bgxmw7jmk7y6pla83m16p7lb41lbqgg53j8x2cds";
       type = "gem";
     };
-    version = "1.6.12";
+    version = "1.6.14";
   };
   ttfunk = {
     groups = ["default"];
