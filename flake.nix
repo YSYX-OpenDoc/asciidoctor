@@ -1,4 +1,5 @@
 {
+  inputs.nixpkgs.url = "github:Anillc/nixpkgs/gem-path";
   outputs = inputs@{
     self, nixpkgs, flake-parts,
   }: flake-parts.lib.mkFlake { inherit inputs; } {
@@ -23,6 +24,7 @@
         buildInputs = with pkgs; [];
         nativeBuildInputs = with pkgs; [
           asciidoctor gen prawn-subtree
+          nodePackages.wavedrom-cli
         ];
         shellHook = ''
           export MANUAL_PATH=$PWD

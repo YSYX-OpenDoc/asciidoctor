@@ -1,7 +1,6 @@
 {
   lib,
   bundlerApp,
-  bundlerUpdateScript,
   makeWrapper,
   withJava ? true,
   jre, # Used by asciidoctor-diagram for ditaa and PlantUML
@@ -14,6 +13,8 @@ in
 bundlerApp rec {
   pname = "asciidoctor";
   gemdir = ./.;
+
+  extraConfigPaths = [ "${./.}/prawn" ];
 
   exes = [
     "asciidoctor"
@@ -32,16 +33,4 @@ bundlerApp rec {
         --prefix PATH : ${path}
     '') exes
   );
-
-  passthru = {
-    updateScript = bundlerUpdateScript "asciidoctor-with-extensions";
-  };
-
-  meta = with lib; {
-    description = "Faster Asciidoc processor written in Ruby, with many extensions enabled";
-    homepage = "https://asciidoctor.org/";
-    license = licenses.mit;
-    maintainers = with maintainers; [ doronbehar ];
-    platforms = platforms.unix;
-  };
 }
