@@ -1,0 +1,12 @@
+*.pdfmarks
+/_*/
+/Gemfile.lock
+/apidoc/
+/coverage/
+/deep_cover/
+/pkg/
+/scripts/fonts/
+/.bundle/
+/.idea/
+/.ruby-version
+/.yardoc/
