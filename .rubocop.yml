@@ -1,0 +1,52 @@
+inherit_gem:
+  prawn-dev: rubocop.yml
+
+Lint/ConstantDefinitionInBlock:
+  Exclude:
+    - manual/text/formatted_callbacks.rb
+    - manual/text/text_box_extensions.rb
+
+Layout/MultilineOperationIndentation:
+  EnforcedStyle: indented
+  Exclude:
+    - prawn.gemspec
+
+# This file shows examples on how to instantiate a document in multiple ways,
+# it does not actually do the instantiation and isn't actually shadowing any
+# variables.
+Lint/ShadowingOuterLocalVariable:
+  Exclude:
+    - manual/basic_concepts/creation.rb
+
+# In this case we supress Prawn::Errors::CannotFit while trying to scale
+# text down to fit.
+Lint/SuppressedException:
+  Exclude:
+    - lib/prawn/text/formatted/box.rb
+
+Metrics/BlockLength:
+  Exclude:
+    - lib/prawn/graphics.rb
+    - lib/prawn/images/png.rb
+    - lib/prawn/text/formatted/parser.rb
+    - manual/**/*.rb
+    - prawn.gemspec
+    - spec/**/*.rb
+
+Naming/AccessorMethodName:
+  Exclude:
+    - lib/prawn/graphics/color.rb
+
+Naming/PredicateName:
+  Exclude:
+    - lib/prawn/font/ttf.rb
+    - lib/prawn/font/afm.rb
+
+Style/Encoding:
+  # To be safe we are leaving these files encoded ASCII-8BIT as
+  # discussed at https://github.com/prawnpdf/prawn/pull/705
+  Exclude:
+    - lib/prawn/images/jpg.rb
+    - lib/prawn/images/png.rb
+    - lib/prawn/images.rb
+    - spec/png_spec.rb
