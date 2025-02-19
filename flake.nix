@@ -19,14 +19,21 @@
         cd $SHELL_PATH
         git subtree --prefix=asciidoctor/${name} "$@"
       '') [ "prawn" "asciidoctor-pdf" ];
+      target = [ asciidoctor pkgs.nodePackages.wavedrom-cli pkgs.gnumake ];
     in {
       packages.default = asciidoctor;
+      packages.docker = pkgs.dockerTools.buildImage {
+        name = "asciidoctor";
+        tag = "latest";
+        copyToRoot = pkgs.buildEnv {
+          name = "image-root";
+          pathsToLink = [ "/bin" ];
+          paths = [ pkgs.busybox ] ++ target;
+        };
+      };
       devShells.default = pkgs.mkShell {
         buildInputs = with pkgs; [];
-        nativeBuildInputs = with pkgs; [
-          asciidoctor gen
-          nodePackages.wavedrom-cli
-        ] ++ subtrees;
+        nativeBuildInputs = with pkgs; [ gen ] ++ subtrees ++ target;
         shellHook = ''
           export SHELL_PATH=$PWD
         '';
