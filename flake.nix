@@ -1,10 +1,11 @@
 {
   inputs.nixpkgs.url = "github:Anillc/nixpkgs/gem-path";
+  inputs.nix2container.url = "github:nlewo/nix2container";
   outputs = inputs@{
-    self, nixpkgs, flake-parts,
+    self, nixpkgs, flake-parts, nix2container,
   }: flake-parts.lib.mkFlake { inherit inputs; } {
     systems = [ "x86_64-linux" ];
-    perSystem = { pkgs, self', ... }: let
+    perSystem = { self', pkgs, system, ... }: let
       asciidoctor = pkgs.callPackage ./asciidoctor {};
       gen = pkgs.writeScriptBin "gen" ''
         #!${pkgs.runtimeShell}
@@ -19,15 +20,16 @@
         cd $SHELL_PATH
         git subtree --prefix=asciidoctor/${name} "$@"
       '') [ "prawn" "asciidoctor-pdf" ];
+      n2c = nix2container.packages.${system}.nix2container;
       target = [ asciidoctor pkgs.nodePackages.wavedrom-cli pkgs.gnumake ];
     in {
       packages.default = asciidoctor;
-      packages.docker = pkgs.dockerTools.buildImage {
+      packages.docker = n2c.buildImage {
         name = "asciidoctor";
         tag = "latest";
         copyToRoot = pkgs.buildEnv {
           name = "image-root";
-          pathsToLink = [ "/bin" ];
+          # pathsToLink = [ "/bin" ];
           paths = [ pkgs.busybox ] ++ target;
         };
       };
