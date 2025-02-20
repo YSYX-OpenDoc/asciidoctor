@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 gem 'prawn', :path => './prawn'
 gem 'asciidoctor-pdf', :path => './asciidoctor-pdf'
-gem 'asciidoctor'
+gem 'asciidoctor', :path => './asciidoctor'
 gem 'asciidoctor-bibtex'
 gem 'asciidoctor-diagram'
 gem 'asciidoctor-epub3'

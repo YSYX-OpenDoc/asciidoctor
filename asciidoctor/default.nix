@@ -11,12 +11,16 @@ let
   path = lib.makeBinPath (lib.optional withJava jre);
 in
 bundlerApp rec {
-  pname = "asciidoctor";
+  name = "asciidoctor";
+  pname = null;
+  version = "0.0.0";
+
   gemdir = ./.;
 
   extraConfigPaths = [
     "${./.}/prawn"
     "${./.}/asciidoctor-pdf"
+    "${./.}/asciidoctor"
   ];
 
   exes = [
@@ -27,6 +31,8 @@ bundlerApp rec {
     "asciidoctor-reducer"
     "asciidoctor-revealjs"
   ];
+
+  installManpages = false;
 
   nativeBuildInputs = [ makeWrapper ];
 

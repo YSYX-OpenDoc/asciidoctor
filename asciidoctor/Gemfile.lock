@@ -14,6 +14,11 @@ PATH
       ttfunk (~> 1.7.0)
 
 PATH
+  remote: asciidoctor
+  specs:
+    asciidoctor (2.0.23)
+
+PATH
   remote: prawn
   specs:
     prawn (2.4.0)
@@ -27,7 +32,6 @@ GEM
     addressable (2.8.7)
       public_suffix (>= 2.0.2, < 7.0)
     afm (0.2.2)
-    asciidoctor (2.0.23)
     asciidoctor-bibtex (0.9.0)
       asciidoctor (~> 2.0)
       bibtex-ruby (~> 6.1)
@@ -144,7 +148,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  asciidoctor
+  asciidoctor!
   asciidoctor-bibtex
   asciidoctor-diagram
   asciidoctor-epub3

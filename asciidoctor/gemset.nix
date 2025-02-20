@@ -34,9 +34,8 @@
     groups = ["default"];
     platforms = [];
     source = {
-      remotes = ["https://rubygems.org"];
-      sha256 = "1wyxgwmnz9bw377r3lba26b090hbsq9qnbw8575a1prpy83qh82j";
-      type = "gem";
+      path = ./asciidoctor;
+      type = "path";
     };
     version = "2.0.23";
   };

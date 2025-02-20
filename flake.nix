@@ -26,7 +26,7 @@
         export PATH=$PATH:${pkgs.lib.makeBinPath (with pkgs; [ git ])}
         cd $SHELL_PATH
         git subtree --prefix=asciidoctor/${name} "$@"
-      '') [ "prawn" "asciidoctor-pdf" ];
+      '') [ "prawn" "asciidoctor-pdf" "asciidoctor" ];
 
       n2c = nix2container.packages.${system}.nix2container;
       target = [ asciidoctor node pkgs.gnumake ];
