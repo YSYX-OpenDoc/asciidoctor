@@ -301,6 +301,15 @@ let
         sha512 = "xBaJish5OeGmniDj9cW5PRa/PtmuVU3ziqrbr5xJj901ZDN4TosrVaNZpEiLZAxdfnhAe7uQ7QFWfjPe9d9K2Q==";
       };
     };
+    "@resvg/resvg-js-darwin-arm64-2.6.2" = {
+      name = "_at_resvg_slash_resvg-js-darwin-arm64";
+      packageName = "@resvg/resvg-js-darwin-arm64";
+      version = "2.6.2";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/@resvg/resvg-js-darwin-arm64/-/resvg-js-darwin-arm64-2.6.2.tgz";
+        sha512 = "nmok2LnAd6nLUKI16aEB9ydMC6Lidiiq2m1nEBDR1LaaP7FGs4AJ90qDraxX+CWlVuRlvNjyYJTNv8qFjtL9+A==";
+      };
+    };
     "@resvg/resvg-js-linux-x64-gnu-2.6.2" = {
       name = "_at_resvg_slash_resvg-js-linux-x64-gnu";
       packageName = "@resvg/resvg-js-linux-x64-gnu";
@@ -1326,6 +1335,7 @@ let
       sources."@jimp/types-0.16.13"
       sources."@jimp/utils-0.16.13"
       sources."@resvg/resvg-js-2.6.2"
+      sources."@resvg/resvg-js-darwin-arm64-2.6.2"
       sources."@resvg/resvg-js-linux-x64-gnu-2.6.2"
       sources."@tokenizer/token-0.3.0"
       sources."@types/node-16.9.1"
