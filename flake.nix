@@ -4,7 +4,7 @@
   outputs = inputs@{
     self, nixpkgs, flake-parts, nix2container,
   }: flake-parts.lib.mkFlake { inherit inputs; } {
-    systems = [ "x86_64-linux" ];
+    systems = [ "x86_64-linux" "aarch64-darwin" ];
     perSystem = { self', pkgs, system, ... }: let
       asciidoctor = pkgs.callPackage ./asciidoctor {};
       node = let
