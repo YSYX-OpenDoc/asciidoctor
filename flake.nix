@@ -30,6 +30,13 @@
 
       n2c = nix2container.packages.${system}.nix2container;
       target = [ asciidoctor node pkgs.gnumake ];
+
+      fc = let
+        fonts = pkgs.makeFontsConf { fontDirectories = []; };
+      in pkgs.runCommand "fc" {} ''
+        mkdir -p $out/{etc/fonts,var/cache/fontconfig}
+        ln -s ${fonts} $out/etc/fonts/fonts.conf
+      '';
     in {
       packages.default = asciidoctor;
       packages.docker = n2c.buildImage {
@@ -37,7 +44,7 @@
         tag = "latest";
         copyToRoot = pkgs.buildEnv {
           name = "image-root";
-          paths = [ pkgs.busybox ] ++ target;
+          paths = [ pkgs.busybox fc ] ++ target;
         };
       };
       devShells.default = pkgs.mkShell {
